@@ -20,29 +20,6 @@ build:review:
     paths:
      - run-$CI_PROJECT_NAME-$CI_COMMIT_REF_NAME.sh
     expire_in: 1 week
-  environment:
-    name: review/$CI_COMMIT_REF_NAME
-    on_stop: stop:build:review
-    auto_stop_in: 1 week
-  only:
-    - branches
-  except:
-    - master
-    - main
-
-stop:build:review:
-  stage: build
-  tags:
-    - docker
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/paulgoio/toolkit:production
-  variables:
-    GIT_STRATEGY: none
-  script:
-    - echo "Stopping review/$CI_COMMIT_REF_NAME environment."
-  environment:
-    name: review/$CI_COMMIT_REF_NAME
-    action: stop
-  when: manual
   only:
     - branches
   except:
