@@ -3,7 +3,7 @@ stages:
 
 include:
   # build and push main branch to dockerhub
-  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.4.0
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.6.3
     inputs:
       docker-user: $DOCKER_USER
       docker-passwd: $DOCKER_PASSWD
@@ -13,6 +13,6 @@ include:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
   # build and push feature branches to local gitlab registry
-  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.4.0
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.6.3
     rules:
       - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
