@@ -8,7 +8,7 @@ include:
       docker-user: ${HARBOR_USERNAME}
       docker-passwd: ${HARBOR_PASSWORD}
       docker-registry: ${HARBOR_URL}
-      docker-tag: $HARBOR_HOST/${HARBOR_PROJECT}/$CI_PROJECT_NAME:production
+      docker-tag: $HARBOR_HOST/${HARBOR_PROJECT}/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:production
     rules:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
