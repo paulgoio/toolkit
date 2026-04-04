@@ -5,10 +5,10 @@ include:
   # build and push main branch to dockerhub
   - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.6.4
     inputs:
-      docker-user: $DOCKER_USER
-      docker-passwd: $DOCKER_PASSWD
-      docker-registry: docker.io
-      docker-tag: $DOCKER_REPO/$CI_PROJECT_NAME:production
+      docker-user: ${HARBOR_USERNAME}
+      docker-passwd: ${HARBOR_PASSWORD}
+      docker-registry: ${HARBOR_URL}
+      docker-tag: ${HARBOR_OCI}/${HARBOR_PROJECT}/$CI_PROJECT_NAME:production
     rules:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
