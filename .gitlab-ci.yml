@@ -3,13 +3,13 @@ stages:
 
 include:
   # build and push main branch to dockerhub
-  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.8.1
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.9.2
     inputs:
       docker-tag: $HARBOR_HOST/${HARBOR_PROJECT}/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:production
     rules:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
   # build and push feature branches to local gitlab registry
-  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.8.1
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.9.2
     rules:
       - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
